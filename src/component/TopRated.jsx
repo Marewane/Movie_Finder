@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Movie from "./Movie"; // Reuse your existing card component
+import Movie from "./Movie";
 
 export default function TopRated() {
   const [topRated, setTopRated] = useState([]);
@@ -31,12 +31,25 @@ export default function TopRated() {
       <h1 className="text-[30px] inline-block">Top Rated Movies :</h1>
       {error && <h1 className="text-red-600">Error : {error}</h1>}
 
-      <div className="flex space-x-4 overflow-x-auto scrollbar-hide scroll-smooth mt-[20px]">
+      <div className="flex overflow-x-auto gap-4 pb-2">
         {topRated.results
           ? topRated.results.map((movie) => (
-              <Movie key={movie.id} movie={movie} />
+              <div key={movie.id} className="min-w-[200px] flex-shrink-0">
+                <Movie movie={movie} />
+              </div>
             ))
-          : "loading ..."}
+          : Array.from({ length: 12 }).map((_, index) => (
+              <div
+                key={index}
+                className="min-w-[200px] bg-gray-300 animate-pulse rounded-lg flex-shrink-0"
+              >
+                <div className="w-full h-72 bg-gray-400 rounded-t-lg"></div>
+                <div className="p-2">
+                  <div className="h-4 bg-gray-400 rounded mb-2"></div>
+                  <div className="h-3 bg-gray-400 rounded w-3/4"></div>
+                </div>
+              </div>
+            ))}
       </div>
     </>
   );

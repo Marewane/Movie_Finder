@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Movie from "./Movie"; // You can reuse this if it works for TV shows too
+import Movie from "./Movie";
 
 export default function TVShows() {
   const [shows, setShows] = useState([]);
@@ -53,12 +53,23 @@ export default function TVShows() {
         </div>
       </div>
 
-      <div className="flex space-x-4 overflow-x-auto scrollbar-hide scroll-smooth mt-[20px]">
+      <div className="flex overflow-x-auto gap-4 pb-2 mt-[20px]">
         {shows.results
           ? shows.results.map((show) => (
-              <Movie key={show.id} movie={show} /> // You can rename this to TVCard if needed
+              <div key={show.id} className="min-w-[200px] flex-shrink-0">
+                <Movie movie={show} />
+              </div>
             ))
-          : "loading ..."}
+          : Array.from({length: 12}).map((_, index) => (
+              <div key={index} className="min-w-[200px] bg-gray-300 animate-pulse rounded-lg flex-shrink-0">
+                <div className="w-full h-72 bg-gray-400 rounded-t-lg"></div>
+                <div className="p-2">
+                  <div className="h-4 bg-gray-400 rounded mb-2"></div>
+                  <div className="h-3 bg-gray-400 rounded w-3/4"></div>
+                </div>
+              </div>
+            ))
+        }
       </div>
     </>
   );
