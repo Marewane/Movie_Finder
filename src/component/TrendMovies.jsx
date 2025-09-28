@@ -12,7 +12,8 @@ export default function Movies(){
     useEffect(()=>{
         const fetchMovies = async ()=>{
             try {
-                const res = await axios.get(`https://api.themoviedb.org/3/trending/all/${selector}?language=en-US`,{
+                const res = await axios.get(`https://api.themoviedb.org/3/trending/movie/${selector}?language=en-US`,
+{
                     headers:{
                         Authorization:`Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
                         'Content-Type':'application/json'

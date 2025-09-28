@@ -18,28 +18,17 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Middle: Search bar */}
-        <div className="flex-1 flex justify-center px-6">
-          <input
-            type="text"
-            placeholder="Search movies..."
-            className="w-full max-w-md px-4 py-2 rounded-lg bg-gray-700 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-xl"
-          />
-        </div>
+        
 
         {/* Right: Categories + Subscribe */}
         <div className="flex items-center gap-6 relative">
          {/* Category Dropdown */}
-        <div className="relative group">
-          <button className="text-gray-700 hover:text-blue-500">
-            Categories
-          </button>
-          <ul className="absolute left-0 top-full mt-2 w-40 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Movies</li>
-            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Tv-Shows</li>
-            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Cartoon</li>
-          </ul>
-        </div>
+          <a href="#" className=" hover:text-sky-200 ">Movies</a>
+          <a href="#" className="hover:text-sky-200">Tv Shows</a>
+          <a href="#" className="hover:text-sky-200">About</a>
+
+
+        
 
 
           {/* Subscribe button */}
