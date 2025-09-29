@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Movie from "./Movie";
 
 export default function TopRated() {
   const [topRated, setTopRated] = useState([]);
   const [error, setError] = useState(false);
+  
 
   useEffect(() => {
     const fetchTopRated = async () => {
@@ -35,7 +37,9 @@ export default function TopRated() {
         {topRated.results
           ? topRated.results.map((movie) => (
               <div key={movie.id} className="min-w-[200px] flex-shrink-0">
-                <Movie movie={movie} />
+                <Link to={`/movies/${movie.id}`}>
+                  <Movie movie={movie} />
+                </Link>
               </div>
             ))
           : Array.from({ length: 12 }).map((_, index) => (

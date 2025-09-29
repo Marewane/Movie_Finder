@@ -54,7 +54,9 @@ export default function TrendMovies(){
                 {
                 movies.results ? movies.results.map((movie)=>(
                     <div key={movie.id} className="min-w-[200px] flex-shrink-0">
-                        <Movie movie={movie} />
+                        <Link to={`/movies/${movie.id}`}>
+                            <Movie movie={movie} />
+                        </Link>
                     </div>
                 )) : (
                     // Loading skeleton

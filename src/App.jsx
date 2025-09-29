@@ -8,6 +8,8 @@ import TopRated from './component/TopRated';
 import TopRatedTV from './component/TopRatedTV';
 import SearchResults from './component/SearchResults';
 import Footer from './component/Footer';
+import MovieDetails from './component/MovieDetails.jsx';
+import TvSeriesDetails from './component/tvSeriesDetails.jsx';
 
 // Home page component
 function HomePage() {
@@ -76,7 +78,9 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/movies" element={<MoviesPage />} />
+            <Route path='/movies/:movie_id' element={<MovieDetails/>}/>
             <Route path="/tv-shows" element={<TVShowsPage />} />
+            <Route path='/tv-shows/:series_id' element={<TvSeriesDetails/>}/>
             <Route path="/about" element={<AboutPage />} />
             <Route path="/search" element={<SearchResults />} />
           </Routes>

@@ -15,7 +15,7 @@ export default function Navbar() {
           <img
             src="./src/assets/MovieLogo.png"
             alt="Website Logo"
-            className="h-9 w-auto"
+            className="h-9 w-auto inline-block"
           />
           <Link to="/" className="text-base font-semibold text-white hover:text-sky-200">
             Movie Finder

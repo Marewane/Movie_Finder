@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Movie from "./Movie";
 
 export default function TVShows() {
@@ -57,7 +58,9 @@ export default function TVShows() {
         {shows.results
           ? shows.results.map((show) => (
               <div key={show.id} className="min-w-[200px] flex-shrink-0">
-                <Movie movie={show} />
+                <Link to={`/movies/${show.id}`}>
+                  <Movie movie={show} />
+                </Link>
               </div>
             ))
           : Array.from({length: 12}).map((_, index) => (
