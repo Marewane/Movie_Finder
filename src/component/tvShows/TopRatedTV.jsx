@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Movie from "./Movie";
+import Movie from "../movies/Movie.jsx";
 
 export default function TopRatedTV() {
   const [shows, setShows] = useState([]);

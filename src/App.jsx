@@ -2,14 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './component/Navbar';
 import HeroSec from './component/HeroSec';
-import TrendMovies from './component/TrendMovies';
-import TVShows from './component/TVShows';
-import TopRated from './component/TopRated';
-import TopRatedTV from './component/TopRatedTV';
+import TrendMovies from './component/movies/TrendMovies.jsx';
+import TVShows from './component/tvShows/TVShows.jsx';
+import TopRated from './component/movies/TopRated.jsx';
+import TopRatedTV from './component/tvShows/TopRatedTV.jsx';
 import SearchResults from './component/SearchResults';
 import Footer from './component/Footer';
-import MovieDetails from './component/MovieDetails.jsx';
-import TvSeriesDetails from './component/tvSeriesDetails.jsx';
+import MovieDetails from './component/movies/MovieDetails.jsx';
+import TvSeriesDetails from './component/tvShows/tvSeriesDetails.jsx';
 
 // Home page component
 function HomePage() {
