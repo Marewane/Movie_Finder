@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
+import TopBilledCast from "./persons/TopBilledCast";
 
 export default function MovieDetails(){
     const {movie_id} = useParams();
@@ -109,6 +110,8 @@ export default function MovieDetails(){
                 </div>
             </section>
             )}
+
+            <TopBilledCast movie_id={movie_id}/>
         </>
         );
 }
