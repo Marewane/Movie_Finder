@@ -25,35 +25,33 @@ export default function Navbar() {
         {/* Right: Categories + Subscribe */}
         <div className="flex items-center gap-6 relative">
           {/* Navigation Links */}
-          <Link 
-            to="/movies" 
-            className={`hover:text-sky-200 transition-colors ${
-              isActive('/movies') ? 'text-sky-200' : 'text-white'
-            }`}
+          <Link
+            to="/movies"
+            className={`hover:text-sky-200 transition-colors ${isActive('/movies') ? 'text-sky-200' : 'text-white'
+              }`}
           >
             Movies
           </Link>
-          <Link 
-            to="/tv-shows" 
-            className={`hover:text-sky-200 transition-colors ${
-              isActive('/tv-shows') ? 'text-sky-200' : 'text-white'
-            }`}
+          <Link
+            to="/tv-shows"
+            className={`hover:text-sky-200 transition-colors ${isActive('/tv-shows') ? 'text-sky-200' : 'text-white'
+              }`}
           >
             TV Shows
           </Link>
-          <Link 
-            to="/about" 
-            className={`hover:text-sky-200 transition-colors ${
-              isActive('/about') ? 'text-sky-200' : 'text-white'
-            }`}
+          <Link
+            to="/about"
+            className={`hover:text-sky-200 transition-colors ${isActive('/about') ? 'text-sky-200' : 'text-white'
+              }`}
           >
             About
           </Link>
 
-          {/* Subscribe button */}
-          <button onClick={() => alert('You are now a subscriber you get notification of new drops!')} className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition cursor-pointer">
-            Subscribe 
-          </button>
+          <Link to="/movie-search">
+            <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition cursor-pointer">
+              Search
+            </button>
+          </Link>
         </div>
       </div>
     </header>

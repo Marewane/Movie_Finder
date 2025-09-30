@@ -1,4 +1,8 @@
-export default function HeroSec() {
+import { Link } from 'react-router-dom';
+
+
+
+export default function HeroSec({ handleSearchChange }) {
   return (
     <section
       className="relative h-[350px] bg-cover bg-center filter filter-[grayscale(80%)] font-sans"
@@ -15,15 +19,12 @@ export default function HeroSec() {
         </p>
 
         {/* Search Bar */}
-        <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden shadow-md max-w-xl w-full">
-          <input
-            type="text"
-            placeholder="Search for a movie, TV show, or person..."
-            className="w-full px-4 py-3 text-white placeholder-white/70 bg-transparent focus:outline-none"
-          />
+        <div className="">
+          <Link  to="/movie-search"> 
           <button className="px-4 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition cursor-pointer">
-            Search
+            Search 
           </button>
+          </Link>
         </div>
       </div>
     </section>

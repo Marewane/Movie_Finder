@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Navbar from './component/Navbar';
 import HeroSec from './component/HeroSec';
 import TrendMovies from './component/TrendMovies';
@@ -8,6 +8,7 @@ import TopRated from './component/TopRated';
 import TopRatedTV from './component/TopRatedTV';
 import SearchResults from './component/SearchResults';
 import Footer from './component/Footer';
+import MovieSearchPage from './component/MovieSearchPage';
 
 // Home page component
 function HomePage() {
@@ -70,15 +71,16 @@ function AboutPage() {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 flex flex-col">
         <Navbar />
-        <main>
+        <main className='flex-1'>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/movies" element={<MoviesPage />} />
             <Route path="/tv-shows" element={<TVShowsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/search" element={<SearchResults />} />
+            <Route path="/movie-search" element={<MovieSearchPage/>} />
           </Routes>
         </main>
         <Footer />
