@@ -58,7 +58,7 @@ export default function TVShows() {
         {shows.results
           ? shows.results.map((show) => (
               <div key={show.id} className="min-w-[200px] flex-shrink-0">
-                <Link to={`/movies/${show.id}`}>
+                <Link to={`/tv-shows/${show.id}`}>
                   <Movie movie={show} />
                 </Link>
               </div>

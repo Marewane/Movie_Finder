@@ -6,8 +6,8 @@ import TopBilledCast from "../persons/TopBilledCast.jsx";
 export default function MovieDetails(){
     const {movie_id} = useParams();
     const [movieDetails,setMovieDetails] = useState(null);
+    
     const [personsInMovie,setPersonsInMovie] = useState([]);    
-    console.log('this is persons in movies : ',personsInMovie);
     const [error,setError] = useState(null);
     
 

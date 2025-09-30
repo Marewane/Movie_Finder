@@ -1,6 +1,8 @@
 import { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import TopBilledCast from "../persons/TopBilledCast";
+import TopBilledCastTv from "./TopBilledCastTv";
 
 export default function TvSeriesDetails(){
     const {series_id} = useParams();
@@ -90,18 +92,7 @@ export default function TvSeriesDetails(){
                         </div>
 
                         {/* this is characters whitout images */}
-                        {/* <div className="character_no_picture mt-16">
-                            <ol className="grid grid-cols-3 grid-rows-3    h-[300px]">
-                                {
-                                    personsInMovie.crew.filter((p)=>p.job == 'Director' || p.job == 'Story' || p.job == 'Characters').map((p)=>(
-                                        <li className="profile px-[20px] py-[10px]" key={p.id}>
-                                            <p className='font-medium text-[19px]'>{p.name}</p>
-                                            <p>{p.job}</p>
-                                        </li>
-                                    ))
-                                }
-                            </ol>
-                        </div> */}
+                        
 
 
 
@@ -109,6 +100,7 @@ export default function TvSeriesDetails(){
                 </div>
             </section>
             )}
+            <TopBilledCastTv series_id={series_id}/>
         </>
         );
 }

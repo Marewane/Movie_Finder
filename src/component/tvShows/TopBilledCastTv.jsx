@@ -1,26 +1,27 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 
-export default function TopBilledCast({movie_id}){
-    const [BilledCast,setBilledCast] = useState(null);
-    const [movieDetails,setMovieDetails] = useState({});
-    const firstBilledCast = BilledCast && BilledCast.cast.slice(0,13);
-    const budget = movieDetails.budget;
-    const revenue = movieDetails.revenue;
-    const formattedBudget =budget && budget.toLocaleString();
-    const formattedRevenue =revenue && revenue.toLocaleString();
+export default function TopBilledCastTv({series_id}){
+    const [BilledCastTv,setBilledCastTv] = useState(null);
+    const [seriesDetails,setSeriesDetails] = useState({});
+    console.log('this is seriesDetails networks : ',seriesDetails.networks);
+    const firstBilledCastTv = BilledCastTv && BilledCastTv.cast.slice(0,13);
+    // const budget = seriesDetails.budget;
+    // const revenue = seriesDetails.revenue;
+    // const formattedBudget =budget && budget.toLocaleString();
+    // const formattedRevenue =revenue && revenue.toLocaleString();
     const [error,setError] = useState(false)
 
     useEffect(()=>{
         const fetchBilledCast = async ()=>{
             try {
-                const res = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits`,{
+                const res = await axios.get(`https://api.themoviedb.org/3/tv/${series_id}/credits`,{
                     headers:{
                         Authorization:`Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
                         'Content-Type':'application/json'
                     }
                 })
-                setBilledCast(res.data);
+                setBilledCastTv(res.data);
             } catch (error) {
                 setError(error.message)
             }
@@ -28,20 +29,20 @@ export default function TopBilledCast({movie_id}){
 
         const fetchMovieDetails = async ()=>{
             try {
-                const res = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}`,{
+                const res = await axios.get(`https://api.themoviedb.org/3/tv/${series_id}`,{
                     headers:{
                         Authorization:`Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
                         'Content-Type' : 'application/json'
                     }
                 });
-                setMovieDetails(res.data);
+                setSeriesDetails(res.data);
             } catch (error) {
                 setError(error.message);
             }
         }
         fetchMovieDetails();
         fetchBilledCast();
-    },[movie_id])
+    },[series_id])
     return(
         <div className="profile_top_cast my-7 ">
             <h3 className="font-bold text-[30px] mx-7">Top Billed Cast : </h3>
@@ -51,7 +52,7 @@ export default function TopBilledCast({movie_id}){
             <div className="flex ">
                 <div id="cast_scroller" className="overflow-x-auto mx-7 my-3.5 w-[70%]">
                     <ol className="flex gap-4 w-max">
-                        {firstBilledCast ? firstBilledCast.map((cast) => (
+                        {firstBilledCastTv ? firstBilledCastTv.map((cast) => (
                         <li key={cast.id} className="w-[180px]  border border-solid border-[#ddd] flex-shrink-0">
                             <img 
                             src={`https://image.tmdb.org/t/p/w154/${cast.profile_path}`} 
@@ -67,23 +68,31 @@ export default function TopBilledCast({movie_id}){
                     </ol>
                 </div>
                 {
-                    movieDetails ? 
+                    seriesDetails ? 
                     <div id="movie_infos" style={{boxShadow: '-30px 0 74px 44px white' }} className="w-[30%] border-none  p-4">
                         <div className="my-3.5">
                             <h3 className="font-bold text-[17px]">Status </h3>
-                            {movieDetails.status}
+                            {seriesDetails.status}
                         </div>
                         <div className="my-3.5">
                             <h3 className="font-bold text-[17px]">Original Language </h3>
-                            {movieDetails.original_language == 'en' ? 'english' : movieDetails.original_language}
+                            {seriesDetails.original_language == 'en' ? 'english' : seriesDetails.original_language}
                         </div>
                         <div className="my-3.5">
-                            <h3 className="font-bold text-[17px]">Budget </h3>
-                            ${formattedBudget}
+                            <h3 className="font-bold text-[17px]">Network </h3>
+                            <div id="networks_tvShows" className=" w-full flex flex-wrap gap-5">
+                                {
+                                    seriesDetails.networks && seriesDetails.networks.map((network)=>(
+                                        <img key={network.id} src={`https://image.tmdb.org/t/p/w92/${network.logo_path}`} alt="logo network" />
+                                    ))
+                                }
+                            </div>
+
+                            
                         </div>
                         <div className="my-3.5">
-                            <h3 className="font-bold text-[17px]">Revenue </h3>
-                            ${formattedRevenue}
+                            <h3 className="font-bold text-[17px]">Type </h3>
+                            {seriesDetails.type}
                         </div>
                     </div>
                     : 'Loading ...'
