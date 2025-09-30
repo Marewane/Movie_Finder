@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
@@ -15,7 +13,7 @@ export default function Navbar() {
           <img
             src="./src/assets/MovieLogo.png"
             alt="Website Logo"
-            className="h-9 w-auto"
+            className="h-9 w-auto inline-block"
           />
           <Link to="/" className="text-base font-semibold text-white hover:text-sky-200">
             Movie Finder

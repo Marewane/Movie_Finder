@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
-import Movie from '../component/Movie';
+import Movie from '../component/movies/Movie.jsx';
 
 export default function SearchResults() {
   const [searchParams] = useSearchParams();

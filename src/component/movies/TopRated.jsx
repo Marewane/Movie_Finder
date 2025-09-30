@@ -1,16 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Movie from "./Movie";
 
-export default function TopRatedTV() {
-  const [shows, setShows] = useState([]);
+export default function TopRated() {
+  const [topRated, setTopRated] = useState([]);
   const [error, setError] = useState(false);
+  
 
   useEffect(() => {
-    const fetchTopRatedTV = async () => {
+    const fetchTopRated = async () => {
       try {
         const res = await axios.get(
-          `https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1`,
+          `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1`,
           {
             headers: {
               Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
@@ -18,24 +20,26 @@ export default function TopRatedTV() {
             },
           }
         );
-        setShows(res.data);
+        setTopRated(res.data);
       } catch (error) {
         setError(error.message);
       }
     };
-    fetchTopRatedTV();
+    fetchTopRated();
   }, []);
 
   return (
     <>
-      <h1 className="text-[30px] inline-block">Top Rated TV Shows :</h1>
+      <h1 className="text-[30px] inline-block">Top Rated Movies :</h1>
       {error && <h1 className="text-red-600">Error : {error}</h1>}
 
       <div className="flex overflow-x-auto gap-4 pb-2">
-        {shows.results
-          ? shows.results.map((show) => (
-              <div key={show.id} className="min-w-[200px] flex-shrink-0">
-                <Movie movie={show} />
+        {topRated.results
+          ? topRated.results.map((movie) => (
+              <div key={movie.id} className="min-w-[200px] flex-shrink-0">
+                <Link to={`/movies/${movie.id}`}>
+                  <Movie movie={movie} />
+                </Link>
               </div>
             ))
           : Array.from({ length: 12 }).map((_, index) => (

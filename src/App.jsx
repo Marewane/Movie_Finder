@@ -2,13 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Navbar from './component/Navbar';
 import HeroSec from './component/HeroSec';
-import TrendMovies from './component/TrendMovies';
-import TVShows from './component/TVShows';
-import TopRated from './component/TopRated';
-import TopRatedTV from './component/TopRatedTV';
+import TrendMovies from './component/movies/TrendMovies.jsx';
+import TVShows from './component/tvShows/TVShows.jsx';
+import TopRated from './component/movies/TopRated.jsx';
+import TopRatedTV from './component/tvShows/TopRatedTV.jsx';
 import SearchResults from './component/SearchResults';
 import Footer from './component/Footer';
 import MovieSearchPage from './component/MovieSearchPage';
+import MovieDetails from './component/movies/MovieDetails.jsx';
+import TvSeriesDetails from './component/tvShows/tvSeriesDetails.jsx';
 
 // Home page component
 function HomePage() {
@@ -77,7 +79,9 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/movies" element={<MoviesPage />} />
+            <Route path='/movies/:movie_id' element={<MovieDetails/>}/>
             <Route path="/tv-shows" element={<TVShowsPage />} />
+            <Route path='/tv-shows/:series_id' element={<TvSeriesDetails/>}/>
             <Route path="/about" element={<AboutPage />} />
             <Route path="/search" element={<SearchResults />} />
             <Route path="/movie-search" element={<MovieSearchPage/>} />
